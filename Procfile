@@ -1,1 +1,1 @@
-worker: python snapbot.py
+worker: cd masterz | python snapbot.py
