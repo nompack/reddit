@@ -5,6 +5,8 @@ import time
 
 import requests
 import requests.auth
+Saved_comments = open('donecomments.txt', 'r+')
+
 
 reddit = praw.Reddit(client_id='1rRYW4ILxwgADQ',
                      client_secret='heJu5lZGOClfEWnNR8CC3NFPZw4',
@@ -32,11 +34,13 @@ subreddit = reddit.subreddit('thanosdidnothingwrong')
 alreadydone=[]
 
 for submission in subreddit.stream.comments():
-    if keyphrase in submission.body.lower() and submission.id not in alreadydone:
+    if keyphrase in submission.body.lower() and comment.id not in Saved_comments.read():
         print (submission.body)
         try:
             submission.reply('You said SNAP! The hardest choices require the strongest wills')
-            alreadydone.append(submission.id)
+            Saved_comments.write(comment.id)
+
+            continue
         except:
             print("You have been rate limited trying again in 3 minutes")
             time.sleep(180)
