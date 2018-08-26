@@ -47,11 +47,11 @@ for submission in subreddit.stream.comments():
             output, error = process.communicate()
             document = open('donecomments.txt', 'w+')
             print(document.read())
-            print(comment.id)
+            print(comment.id + "is the id")
             continue
         except:
-            print("You have been rate limited trying again in 3 minutes")
-            time.sleep(180)
+            print("You have been rate limited trying again in 1 minutes")
+            time.sleep(60)
             continue
         
 
