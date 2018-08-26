@@ -40,6 +40,8 @@ for submission in subreddit.stream.comments():
             submission.reply('You said SNAP! The hardest choices require the strongest wills')
             document.write(submission.id)
             document.close()
+            print("saved")
+            document = open('donecomments.txt', 'w+')
             continue
         except:
             print("You have been rate limited trying again in 3 minutes")
