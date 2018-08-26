@@ -39,8 +39,8 @@ for submission in subreddit.stream.comments():
         try:
             submission.reply('You said SNAP! The hardest choices require the strongest wills')
             document.write(submission.id)
-            document.save()
-            break
+            document.close()
+            continue
         except:
             print("You have been rate limited trying again in 3 minutes")
             time.sleep(180)
