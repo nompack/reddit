@@ -5,7 +5,7 @@ import time
 
 import requests
 import requests.auth
-Saved_comments = open('donecomments.txt', 'r+')
+Saved_comments = open('donecomments.txt', 'w+')
 
 
 reddit = praw.Reddit(client_id='1rRYW4ILxwgADQ',
