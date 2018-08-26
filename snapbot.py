@@ -53,6 +53,7 @@ for submission in subreddit.stream.comments():
         except:
             print("You have been rate limited trying again in 1 minutes")
             time.sleep(60)
+            document = open('donecomments.txt', 'w+')
             continue
         
 
