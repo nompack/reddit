@@ -41,6 +41,10 @@ for submission in subreddit.stream.comments():
             document.write(submission.id)
             document.close()
             print("saved")
+            bashCommand = "dir"
+            import subprocesss
+            process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
+            output, error = process.communicate()
             document = open('donecomments.txt', 'w+')
             continue
         except:
