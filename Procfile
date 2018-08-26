@@ -1,1 +1,1 @@
-web: python snapbot.py
+web: python redditbot.py
