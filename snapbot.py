@@ -5,7 +5,7 @@ import time
 
 import requests
 import requests.auth
-Saved_comments = open('donecomments.txt', 'w+')
+document = open('donecomments.txt', 'w+')
 
 
 reddit = praw.Reddit(client_id='1rRYW4ILxwgADQ',
@@ -30,16 +30,16 @@ keyphrase = 'snap'
 
 
 # look for phrase and reply appropriately
-subreddit = reddit.subreddit('thanosdidnothingwrong')
-alreadydone=[]
+subreddit = reddit.subreddit('redditbay')
+
 
 for submission in subreddit.stream.comments():
-    if keyphrase in submission.body.lower() and submission.id not in Saved_comments.read():
+    if keyphrase in submission.body.lower() and submission.id not in document.read():
         print (submission.body)
         try:
             submission.reply('You said SNAP! The hardest choices require the strongest wills')
-            Saved_comments.write(submission.id)
-
+            document.write(submission.id)
+            document.save()
             continue
         except:
             print("You have been rate limited trying again in 3 minutes")
