@@ -34,11 +34,11 @@ subreddit = reddit.subreddit('thanosdidnothingwrong')
 alreadydone=[]
 
 for submission in subreddit.stream.comments():
-    if keyphrase in submission.body.lower() and comment.id not in Saved_comments.read():
+    if keyphrase in submission.body.lower() and submission.id not in Saved_comments.read():
         print (submission.body)
         try:
             submission.reply('You said SNAP! The hardest choices require the strongest wills')
-            Saved_comments.write(comment.id)
+            Saved_comments.write(submission.id)
 
             continue
         except:
