@@ -21,7 +21,7 @@ response = requests.post("https://www.reddit.com/api/v1/access_token", auth=clie
 resp = response.json()
 headers = {"Authorization": "bearer " + resp['access_token'], "User-Agent": "personalbot/0.1 by hacksorskill"}
 response = requests.get("https://oauth.reddit.com/api/v1/me", headers=headers)
-res p =response.json()
+resp =response.json()
 
 
 
