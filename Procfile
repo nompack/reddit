@@ -1,1 +1,1 @@
-worker: python snapbot.py
+web: python snapbot.py
