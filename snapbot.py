@@ -30,7 +30,7 @@ keyphrase = 'snap'
 
 
 # look for phrase and reply appropriately
-subreddit = reddit.subreddit('redditbay')
+subreddit = reddit.subreddit('thanosdidnothingwrong')
 
 
 for submission in subreddit.stream.comments():
