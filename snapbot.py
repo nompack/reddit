@@ -1,5 +1,4 @@
 
- 
 import praw
 import time
 
@@ -13,7 +12,7 @@ reddit = praw.Reddit(client_id='1rRYW4ILxwgADQ',
                      username='hacksorskillbot',
                      password='fastlol1234',
                      user_agent='bot by hacksorskill')
-                    
+
 
 client_auth = requests.auth.HTTPBasicAuth('1rRYW4ILxwgADQ', 'heJu5lZGOClfEWnNR8CC3NFPZw4')
 post_data = {"grant_type": "password", "username": "hacksorskillbot", "password": "fastlol1234"}
@@ -22,10 +21,10 @@ response = requests.post("https://www.reddit.com/api/v1/access_token", auth=clie
 resp = response.json()
 headers = {"Authorization": "bearer " + resp['access_token'], "User-Agent": "personalbot/0.1 by hacksorskill"}
 response = requests.get("https://oauth.reddit.com/api/v1/me", headers=headers)
-resp=response.json()
+res p =response.json()
 
 
-        
+
 keyphrase = 'snap'
 
 
@@ -34,7 +33,7 @@ subreddit = reddit.subreddit('thanosdidnothingwrong')
 
 
 for submission in subreddit.stream.comments():
-    if keyphrase in submission.body.lower() and submission.id not in document.read():
+    if keyphrase in submission.body.lower() and submission.id not in document.read() and submission.author != "hacksorskillbot":
         print (submission.body)
         try:
             submission.reply('You said SNAP! The hardest choices require the strongest wills')
@@ -55,7 +54,7 @@ for submission in subreddit.stream.comments():
             time.sleep(60)
             document = open('donecomments.txt', 'w+')
             continue
-        
 
-            
-        
+
+
+
