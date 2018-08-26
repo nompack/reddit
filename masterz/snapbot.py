@@ -35,7 +35,7 @@ for submission in subreddit.stream.comments():
     if keyphrase in submission.body.lower() and submission.id not in alreadydone:
         print (submission.body)
         try:
-            submission.reply('You said SNAP! The hardest decisions require the strongest wills')
+            submission.reply('You said SNAP! The hardest choices require the strongest wills')
             alreadydone.append(submission.id)
         except:
             print("You have been rate limited trying again in 3 minutes")
