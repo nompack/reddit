@@ -46,6 +46,8 @@ for submission in subreddit.stream.comments():
             process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
             output, error = process.communicate()
             document = open('donecomments.txt', 'w+')
+            print(document.read())
+            print(comment.id)
             continue
         except:
             print("You have been rate limited trying again in 3 minutes")
