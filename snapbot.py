@@ -1,4 +1,4 @@
-
+`
  
 import praw
 import time
@@ -39,6 +39,7 @@ for submission in subreddit.stream.comments():
         try:
             submission.reply('You said SNAP! The hardest choices require the strongest wills')
             document.write(submission.id)
+            print(submission.id)
             document.close()
             print("saved")
             bashCommand = "dir"
@@ -47,7 +48,7 @@ for submission in subreddit.stream.comments():
             output, error = process.communicate()
             document = open('donecomments.txt', 'w+')
             print(document.read())
-            print(comment.id + "is the id")
+            print(submission.id + "is the id")
             continue
         except:
             print("You have been rate limited trying again in 1 minutes")
