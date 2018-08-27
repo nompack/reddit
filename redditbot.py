@@ -55,14 +55,15 @@ for submission in reddit.redditor('hacksorskill').stream.comments():
                 banned) + "\n" + "I am a bot created by /u/hacksorskill, pm me for more info")
             submission.reply("OP's name is " + userz.name + "\n\nOP has a total of " + str(
                 karma) + " karma" + "\n\nOP's account was created on " + str(datecreated) + "\n\n" + str(
-                banned) + "\n\n" + "I am a bot created by /u/hacksorskill, pm me for more info")
+                banned)+"\n\nHowever it is highly recommended that you check this user's name on the Universal Scammer List\n\n At https://universalscammerlist.com/search.php \n\nPlease have caution trading/completing transactions with any user regardless of whether they are on the list or not." + "\n\n" + "I am a bot created by /u/hacksorskill, pm me for more info")
+            reddit.redditor('hacksorskill').message("User Info",
+                                                    "OP's name is " + userz.name + "\n\nOP has a total of " + str(
+                                                        karma) + " karma" + "\n\nOP's account was created on " + str(
+                                                        datecreated) + "\n\n" + str(
+                                                        banned) + "\n\n" + "I am a bot created by /u/hacksorskill, pm me for more info")
 
     except:
-        reddit.redditor('hacksorskill').message("User Info",
-                                                "OP's name is " + userz.name + "\n\nOP has a total of " + str(
-                                                    karma) + " karma" + "\n\nOP's account was created on " + str(
-                                                    datecreated) + "\n\n" + str(
-                                                    banned) + "\n\n" + "I am a bot created by /u/hacksorskill, pm me for more info")
+        continue
 
 
 
