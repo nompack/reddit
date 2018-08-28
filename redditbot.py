@@ -27,7 +27,7 @@ resp = response.json()
 keyphrase = '!rep-bot'
 
 # look for phrase and reply appropriately
-subreddit = reddit.subreddit('all')
+subreddit = reddit.subreddit('signupsforpay+redditbay+slavelabour+giftcardexchange+insertcustomname+trade+steamgameswap+indiegameswap+counterstrikeglobaloffensive')
 
 listofcomments = []
 # for submission in reddit.redditor('hacksorskill').stream.comments():
