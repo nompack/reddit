@@ -12,7 +12,7 @@ reddit = praw.Reddit(client_id='1rRYW4ILxwgADQ',
                      client_secret='heJu5lZGOClfEWnNR8CC3NFPZw4',
                      username='hacksorskillbot',
                      password='fastlol1234',
-                     user_agent='bot by hacksorskill')
+                     user_agent='reputation bot by hacksorskill')
 
 client_auth = requests.auth.HTTPBasicAuth('1rRYW4ILxwgADQ', 'heJu5lZGOClfEWnNR8CC3NFPZw4')
 post_data = {"grant_type": "password", "username": "hacksorskillbot", "password": "fastlol1234"}
@@ -24,13 +24,14 @@ headers = {"Authorization": "bearer " + resp['access_token'], "User-Agent": "per
 response = requests.get("https://oauth.reddit.com/api/v1/me", headers=headers)
 resp = response.json()
 
-keyphrase = '$bid'
+keyphrase = '$callrepbot'
 
 # look for phrase and reply appropriately
+subreddit = reddit.subreddit('all')
 
 listofcomments = []
-for submission in reddit.redditor('hacksorskill').stream.comments():
-
+#for submission in reddit.redditor('hacksorskill').stream.comments():
+for submission in subreddit.stream.submissions():
     try:
         if keyphrase in submission.body.lower() and int(time.time()) - int(submission.created_utc) < 300:
             parent = submission.parent()
@@ -52,17 +53,16 @@ for submission in reddit.redditor('hacksorskill').stream.comments():
 
             print("OP's name is " + userz.name + "\nOP has a total of " + str(
                 karma) + " karma" + "\nOP's account was created on " + str(datecreated) + "\n" + str(
-                banned) + "\n" + "I am a bot created by /u/hacksorskill, pm me for more info")
-            submission.reply("OP's name is " + userz.name + "\n\nOP has a total of " + str(
+                banned) + "\n" + "I am a reputation bot created by /u/hacksorskill, pm me for more info. If you are a moderator of a subreddit and would like this bot to not be included on your subreddit pm me.")
+            everything = ("OP's name is " + userz.name + "\n\nOP has a total of " + str(
                 karma) + " karma" + "\n\nOP's account was created on " + str(datecreated) + "\n\n" + str(
-                banned)+"\n\nHowever it is highly recommended that you check this user's name on the Universal Scammer List\n\n At https://universalscammerlist.com/search.php \n\nPlease have caution trading/completing transactions with any user regardless of whether they are on the list or not." + "\n\n" + "I am a bot created by /u/hacksorskill, pm me for more info")
-            reddit.redditor('hacksorskill').message("User Info",
-                                                    "OP's name is " + userz.name + "\n\nOP has a total of " + str(
-                                                        karma) + " karma" + "\n\nOP's account was created on " + str(
-                                                        datecreated) + "\n\n" + str(
-                                                        banned) + "\n\n" + "I am a bot created by /u/hacksorskill, pm me for more info")
+                banned)+"\n\nHowever it is highly recommended that you check this user's name on the Universal Scammer List\n\n At https://universalscammerlist.com/search.php \n\nPlease have caution trading/completing transactions with any user regardless of whether they are on the list or not." + "\n\n" + "I am a reputation bot created by /u/hacksorskill, pm me for more info. Moderators pm me if you want this bot to be excluded from your subreddit. Please type $callrepbot to summon me.")
+            reddit.redditor(submission.author.name).message(everything)
+            submission.reply(everything)
 
     except:
+        time.sleep(30)
+        print("pausing rate limit")
         continue
 
 
