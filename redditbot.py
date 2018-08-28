@@ -32,6 +32,7 @@ subreddit = reddit.subreddit('all')
 listofcomments = []
 # for submission in reddit.redditor('hacksorskill').stream.comments():
 for submission in subreddit.stream.comments():
+    print(submission.subreddit.name)
 
     if keyphrase in submission.body.lower() and int(time.time()) - int(
             submission.created_utc) < 300 and submission.author.name != "hacksorskillbot":
