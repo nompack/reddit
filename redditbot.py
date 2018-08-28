@@ -24,46 +24,46 @@ headers = {"Authorization": "bearer " + resp['access_token'], "User-Agent": "per
 response = requests.get("https://oauth.reddit.com/api/v1/me", headers=headers)
 resp = response.json()
 
-keyphrase = '$callrepbot'
+keyphrase = '!rep-bot'
 
 # look for phrase and reply appropriately
 subreddit = reddit.subreddit('all')
 
 listofcomments = []
-#for submission in reddit.redditor('hacksorskill').stream.comments():
-for submission in subreddit.stream.submissions():
-    try:
-        if keyphrase in submission.body.lower() and int(time.time()) - int(submission.created_utc) < 300:
-            parent = submission.parent()
+# for submission in reddit.redditor('hacksorskill').stream.comments():
+for submission in subreddit.stream.comments():
 
-            print(parent.author)
-            userz = reddit.redditor(str(parent.author))
-            karma = userz.link_karma + userz.comment_karma
-            datecreated = (datetime.datetime.fromtimestamp(userz.created_utc))
-            print(datecreated)
-            print(karma)
-            namez = userz.name
-            data = usl.query(user, userz.name)
-            if data['banned']:
-                print(userz.name + " is on the universal Scammer List. Be careful!")
-                banned = (userz.name + " is on the universal Scammer List. Be careful!")
-            else:
-                print(userz.name + " is not on the Universal Scammer List.")
-                banned = (userz.name + " is not on the Universal Scammer List.")
+    if keyphrase in submission.body.lower() and int(time.time()) - int(
+            submission.created_utc) < 300 and submission.author.name != "hacksorskillbot":
+        parent = submission.parent()
 
-            print("OP's name is " + userz.name + "\nOP has a total of " + str(
-                karma) + " karma" + "\nOP's account was created on " + str(datecreated) + "\n" + str(
-                banned) + "\n" + "I am a reputation bot created by /u/hacksorskill, pm me for more info. If you are a moderator of a subreddit and would like this bot to not be included on your subreddit pm me.")
-            everything = ("OP's name is " + userz.name + "\n\nOP has a total of " + str(
-                karma) + " karma" + "\n\nOP's account was created on " + str(datecreated) + "\n\n" + str(
-                banned)+"\n\nHowever it is highly recommended that you check this user's name on the Universal Scammer List\n\n At https://universalscammerlist.com/search.php \n\nPlease have caution trading/completing transactions with any user regardless of whether they are on the list or not." + "\n\n" + "I am a reputation bot created by /u/hacksorskill, pm me for more info. Moderators pm me if you want this bot to be excluded from your subreddit. Please type $callrepbot to summon me.")
-            reddit.redditor(submission.author.name).message(everything)
-            submission.reply(everything)
+        print(parent.author)
+        userz = reddit.redditor(str(parent.author))
+        karma = userz.link_karma + userz.comment_karma
+        datecreated = (datetime.datetime.fromtimestamp(userz.created_utc))
+        print(datecreated)
+        print(karma)
+        namez = userz.name
+        data = usl.query(user, userz.name)
+        if data['banned']:
+            print(userz.name + " is on the universal Scammer List. Be careful!")
+            banned = (userz.name + " is on the universal Scammer List. Be careful!")
+        else:
+            print(userz.name + " is not on the Universal Scammer List.")
+            banned = (userz.name + " is not on the Universal Scammer List.")
 
-    except:
-        time.sleep(30)
-        print("pausing rate limit")
-        continue
+        print("OP's name is " + userz.name + "\nOP has a total of " + str(
+            karma) + " karma" + "\nOP's account was created on " + str(datecreated) + "\n" + str(
+            banned) + "\n" + "I am a reputation bot created by http://reddit.com/u/hacksorskill, pm me for more info. If you are a moderator of a subreddit and would like this bot to not be included on your subreddit pm me.")
+        everything = ("OP's name is " + userz.name + "\n\nOP has a total of " + str(
+            karma) + " karma" + "\n\nOP's account was created on " + str(datecreated) + "\n\n" + str(
+            banned) + "\n\nHowever it is highly recommended that you check this user's name on the Universal Scammer List\n\n At https://universalscammerlist.com/search.php \n\nPlease have caution trading/completing transactions with any user regardless of whether they are on the list or not." + "\n\n" + "I am a reputation bot created by /u/hacksorskill, pm me for more info. Moderators pm me if you want this bot to be excluded from your subreddit. Please type !rep-bot to summon me.")
+        reddit.redditor(submission.author.name).message('I am a rep bot created by /u/hacksorskill', everything)
+        submission.reply(everything)
+
+
+
+
 
 
 
