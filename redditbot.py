@@ -32,7 +32,7 @@ subreddit = reddit.subreddit(
 
 listofcomments = []
 # for submission in reddit.redditor('hacksorskill').stream.comments():
-for submission in subreddit.stream.comments():
+for submission in subreddit.stream.comments(pause_after=-1):
     try:
         print(str(submission.subreddit))
 
