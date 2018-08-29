@@ -28,7 +28,7 @@ keyphrase = '!rep-bot'
 
 # look for phrase and reply appropriately
 subreddit = reddit.subreddit(
-    'all')
+    'signupsforpay+redditbay+slavelabour+giftcardexchange+insertcustomname+trade+steamgameswap+indiegameswap+counterstrikeglobaloffensive+gctrading+cash4cash+gctrade+rocketleagueexchange+hardwareswap')
 
 listofcomments = []
 # for submission in reddit.redditor('hacksorskill').stream.comments():
