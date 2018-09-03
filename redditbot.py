@@ -25,7 +25,6 @@ resp = response.json()
 
 # look for phrase and reply appropriately
 print('hi')
-# for submission in reddit.redditor('hacksorskill').stream.comments():
-reddit.redditor(submission.author.name).message('I am a rep bot created by /u/hacksorskill', everything)
+reddit.redditor('hacksorskill').message('I am a rep bot created by /u/hacksorskill')
 
 
