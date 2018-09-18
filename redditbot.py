@@ -290,6 +290,20 @@ try:
             zcounter = counter - 1
             z=z.replace(oldgpa,str(gpa))
             p.close()
+            import smtplib
+            fromaddr = 'suhas.singapore@gmail.com'
+            toaddrs  = 'suhashariharanofs@gmail.com'
+            msg = 'Your GPA has changed!'
+            username = 'suhas.singapore@gmail.com'
+            password = 'Suh12345'
+            server = smtplib.SMTP('smtp.gmail.com:587')
+            server.ehlo()
+            server.starttls()
+
+            server.login(username,password)
+            server.sendmail(fromaddr, toaddrs, msg)
+            server.quit()   
+
             with open('gpas.txt', 'w') as file:
                 file.write(z)
                 file.close()
