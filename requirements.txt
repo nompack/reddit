@@ -1,2 +1,3 @@
 praw
 selenium
+html2text
