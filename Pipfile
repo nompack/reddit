@@ -4,8 +4,8 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-requests = "*"
-praw = "*"
+selenium = "*"
+html2text = "*"
 
 [dev-packages]
 
