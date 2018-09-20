@@ -36,7 +36,7 @@ class S(BaseHTTPRequestHandler):
         
         
         
-def run(server_class=HTTPServer, handler_class=S, port=255657):
+def run(server_class=HTTPServer, handler_class=S, port=60004):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
     print ('Starting httpd...')
