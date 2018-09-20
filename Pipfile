@@ -4,8 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-selenium = "*"
-html2text = "*"
+
 flask = "*"
 
 [dev-packages]
