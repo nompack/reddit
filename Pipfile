@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 selenium = "*"
 html2text = "*"
-flash = "*"
+flask = "*"
 
 [dev-packages]
 
