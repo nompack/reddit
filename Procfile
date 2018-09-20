@@ -1,1 +1,1 @@
-web: python redditbot.py
+worker: python redditbot.py
